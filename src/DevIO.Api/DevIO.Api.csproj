@@ -5,8 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DevIO.Business\DevIO.Business.csproj" />
-    <ProjectReference Include="..\DevIO.Data\DevIO.Data.csproj" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Links e Materiais\API Completa Versao .NET Core3.1\src\DevIO.Business\DevIO.Business.csproj" />
+    <ProjectReference Include="..\..\..\..\Links e Materiais\API Completa Versao .NET Core3.1\src\DevIO.Data\DevIO.Data.csproj" />
   </ItemGroup>
 
 

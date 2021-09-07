@@ -10,6 +10,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DevIO.Data.Repository
 {
+    //Entity, new() = Significa que eu posso instanciar essa Entidade
+    //todos os métodos estão como virtual para usar o override(sobescrever) quando for necessário.
     public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : Entity, new()
     {
         protected readonly MeuDbContext Db;
@@ -23,6 +25,7 @@ namespace DevIO.Data.Repository
 
         public async Task<IEnumerable<TEntity>> Buscar(Expression<Func<TEntity, bool>> predicate)
         {
+            //AsNoTracking é ideal para consulta, o mesmo não faz o rastreio de todo o objeto, sendo assim é mais performatico
             return await DbSet.AsNoTracking().Where(predicate).ToListAsync();
         }
 
@@ -50,6 +53,10 @@ namespace DevIO.Data.Repository
 
         public virtual async Task Remover(Guid id)
         {
+            //Remove do banco sem precisar fazer a busca no banco.
+            //ex: Não é necessário usar o metodo Find para encontrar o id, e devolver o objeto para remover. Com o "new TEntity" você passa somente o Id para remover.
+            // E isso é possível porque todo mundo herda de TEntity
+
             DbSet.Remove(new TEntity { Id = id });
             await SaveChanges();
         }
@@ -61,6 +68,7 @@ namespace DevIO.Data.Repository
 
         public void Dispose()
         {
+            //Db? = Se ele existir faça o Dispose, se nao exister não faça
             Db?.Dispose();
         }
     }
