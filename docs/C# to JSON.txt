@@ -1,0 +1,87 @@
+
+C# to JSON
+
+public class FornecedorViewModel
+    {
+        public Guid Id { get; set; }
+
+        public string Nome { get; set; }
+
+        public string Documento { get; set; }
+
+        public int TipoFornecedor { get; set; }
+
+        public EnderecoViewModel Endereco { get; set; }
+
+        public bool Ativo { get; set; }
+
+        public IEnumerable<ProdutoViewModel> Produtos { get; set; }
+    }
+
+public class EnderecoViewModel
+    {
+        public Guid Id { get; set; }
+
+        public string Logradouro { get; set; }
+
+        public string Numero { get; set; }
+
+        public string Complemento { get; set; }
+
+        public string Bairro { get; set; }
+
+        public string Cep { get; set; }
+
+        public string Cidade { get; set; }
+
+        public string Estado { get; set; }
+
+        public Guid FornecedorId { get; set; }
+    }
+
+public class ProdutoViewModel
+    {
+        public Guid Id { get; set; }
+
+        public Guid FornecedorId { get; set; }
+
+        public string Nome { get; set; }
+
+        public string Descricao { get; set; }
+
+        public string ImagemUpload { get; set; }
+
+        public string Imagem { get; set; }
+
+        public decimal Valor { get; set; }
+
+        public DateTime DataCadastro { get; set; }
+
+        public bool Ativo { get; set; }
+
+        public string NomeFornecedor { get; set; }
+    }
+	
+	
+	
+	
+	
+	/// 
+	{
+  "id": "6f598581-66d5-4b3a-ad72-cd3d36d3461d",
+  "nome": "Casa do Nerd",
+  "documento": "47694812095",
+  "tipoFornecedor": 1,
+    "endereco": {
+    "id": "0a4f8106-0907-4b70-a9f8-ef21e920ebf2",
+    "logradouro": "Rua Teste",
+    "numero": 78,
+    "complemento": "",
+    "bairro": "Bairro Teste",
+    "cep": "03977850",
+    "cidade": "São Paulo",
+    "estado": "SP",
+    "fornecedorId": "00000000-0000-0000-0000-000000000000"
+  },
+  "ativo": true
+}
