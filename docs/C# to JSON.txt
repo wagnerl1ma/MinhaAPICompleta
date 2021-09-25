@@ -64,7 +64,7 @@ public class ProdutoViewModel
 	
 	
 	
-	
+	47694812095
 	
 	/// 
 	{
@@ -84,4 +84,20 @@ public class ProdutoViewModel
     "fornecedorId": "00000000-0000-0000-0000-000000000000"
   },
   "ativo": true
+}
+
+
+ProdutoViewModel ***
+
+{
+  "id": "00000000-0000-0000-0000-000000000000",
+  "fornecedorId": "00000000-0000-0000-0000-000000000000",
+  "nome": null,
+  "descricao": null,
+  "imagemUpload": null,
+  "imagem": null,
+  "valor": 0.0,
+  "dataCadastro": "0001-01-01T00:00:00",
+  "ativo": false,
+  "nomeFornecedor": null
 }

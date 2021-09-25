@@ -18,5 +18,10 @@
     <ProjectReference Include="..\..\..\..\Links e Materiais\API Completa Versao .NET Core3.1\src\DevIO.Data\DevIO.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+    <Folder Include="wwwroot\imagens\" />
+  </ItemGroup>
+
 
 </Project>
