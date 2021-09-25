@@ -40,6 +40,13 @@ namespace DevIO.Api
 
             services.ResolveDependencies();
 
+            // Configuração para customizar as saídas de erro da ModelState
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.SuppressModelStateInvalidFilter = true;
+
+            });
+
             services.AddControllersWithViews()
                 .AddNewtonsoftJson(options =>
                 options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
