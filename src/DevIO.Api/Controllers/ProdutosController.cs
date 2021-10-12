@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace DevIO.Api.Controllers
 {
     //[Route("api/produtos")]
-    [Microsoft.AspNetCore.Mvc.Route("api/produtos")]
+    [Route("api/produtos")]
     public class ProdutosController : MainController
     {
         private readonly IProdutoRepository _produtoRepository;
