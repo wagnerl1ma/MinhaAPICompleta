@@ -1,6 +1,9 @@
 using DevIO.Api.Configuration;
+using DevIO.Api.Extensions;
 using DevIO.Data.Context;
+using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.EntityFrameworkCore;
@@ -36,6 +39,14 @@ namespace DevIO.Api
                 
             services.ResolveDependencies();
 
+            // verifica a saúde da aplicação e banco de dados
+            services.AddHealthChecks()
+                .AddCheck("Produtos", new SqlServerHealthCheck(Configuration.GetConnectionString("DefaultConnection")))
+                .AddSqlServer(Configuration.GetConnectionString("DefaultConnection"), name: "BancoSQL");
+
+            // Interface de HealthChecks
+            //services.AddHealthChecksUI();
+
             // Ignorar looping Json
             services.AddControllersWithViews()
                 .AddNewtonsoftJson(options =>
@@ -51,6 +62,14 @@ namespace DevIO.Api
             app.UseApiConfig(env);
 
             app.UseSwaggerConfig(provider);
+
+            app.UseHealthChecks("/api/hc", new HealthCheckOptions()
+            {
+                Predicate = _=> true,
+                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            });
+
+            //app.UseHealthChecksUI(options => { options.UIPath = "/api/hc-ui"; });
         }
     }
 }
